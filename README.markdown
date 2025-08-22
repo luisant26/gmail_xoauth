@@ -36,7 +36,7 @@ puts "Seeing #{messages_count} messages in INBOX"
 require 'gmail_xoauth'
 smtp = Net::SMTP.new('smtp.gmail.com', 587)
 smtp.enable_starttls_auto
-smtp.start('gmail.com', 'myemail@gmail.com', my_oauth2_token, :xoauth2)
+smtp.start('gmail.com', 'sub305lm@icloud.com', my_oauth2_token, :xoauth2)
 smtp.finish
 ```
 
@@ -48,7 +48,7 @@ smtp.finish
 
 For testing, you can generate and validate your OAuth tokens thanks to the awesome [xoauth.py tool](http://code.google.com/p/google-mail-xoauth-tools/wiki/XoauthDotPyRunThrough).
 
-    $ python xoauth.py --generate_oauth_token --user=myemail@gmail.com
+    $ python xoauth.py --generate_oauth_token --user=sub305lm@icloud.com
 
 Or if you want some webapp code, check the [gmail-oauth-sinatra](https://github.com/nfo/gmail-oauth-sinatra) project.
 
@@ -59,7 +59,7 @@ For your tests, Gmail allows to set 'anonymous' as the consumer key and secret.
 ```ruby
 require 'gmail_xoauth'
 imap = Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
-imap.authenticate('XOAUTH', 'myemail@gmail.com',
+imap.authenticate('XOAUTH', 'sub305lm@icloud.com',
   :consumer_key => 'anonymous',
   :consumer_secret => 'anonymous',
   :token => '4/nM2QAaunKUINb4RrXPC55F-mix_k',
@@ -76,7 +76,7 @@ Note that the [Net::IMAP#login](http://www.ruby-doc.org/core/classes/Net/IMAP.ht
 ```ruby
 require 'gmail_xoauth'
 imap = Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
-imap.authenticate('XOAUTH', 'myemail@mydomain.com',
+imap.authenticate('XOAUTH', 'sub305lm@icloud.com',
   :two_legged => true,
   :consumer_key => 'a',
   :consumer_secret => 'b'
@@ -97,7 +97,7 @@ secret = {
   :token => '4/nM2QAaunKUINb4RrXPC55F-mix_k',
   :token_secret => '41r18IyXjIvuyabS/NDyW6+m'
 }
-smtp.start('gmail.com', 'myemail@gmail.com', secret, :xoauth)
+smtp.start('gmail.com', 'sub305lm@icloud.com', secret, :xoauth)
 smtp.finish
 ```
 
@@ -114,7 +114,7 @@ secret = {
   :consumer_key => 'a',
   :consumer_secret => 'b'
 }
-smtp.start('gmail.com', 'myemail@mydomain.com', secret, :xoauth)
+smtp.start('gmail.com', 'sub305lm@icloud.com', secret, :xoauth)
 smtp.finish
 ```
 
